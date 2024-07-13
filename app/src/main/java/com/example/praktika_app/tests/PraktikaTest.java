@@ -10,8 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -40,14 +42,48 @@ public class PraktikaTest {
         languageSelectionPage = new LanguageSelectionPage(driver);
     }
 
-    @Test
-    public void testOnboardingAndChangeLanguage() {
-        onboardingPage.clickGetStarted();
-        // Add more steps as necessary to go through onboarding
+    @BeforeMethod
+    public void clearAppData() throws IOException, InterruptedException {
+        // Clear app data
+        ProcessBuilder clearData = new ProcessBuilder("adb", "shell", "pm", "clear", "ai.praktika.android");
+        Process clearProcess = clearData.start();
+        clearProcess.waitFor();
 
-        languageSelectionPage.changeLanguageToSpanish();
-        String selectedLanguage = languageSelectionPage.getSelectedLanguage();
-        Assert.assertEquals(selectedLanguage, "Spanish", "Language did not change to Spanish.");
+        // Launch the app
+        ProcessBuilder launchApp = new ProcessBuilder("adb", "shell", "am", "start", "-n", "ai.praktika.android/.MainActivity");
+        Process launchProcess = launchApp.start();
+        launchProcess.waitFor();
+    }
+
+    @Test
+    public void testOnboardingAndChangeLanguageToItalian() {
+        onboardingPage.clickGetStarted();
+
+        onboardingPage.wainUntilNotificationPopupIsVisible();
+        onboardingPage.clickOnAllowNotificationButton();
+
+        onboardingPage.wainUntilWelcomeSelectorIsPresented();
+        onboardingPage.clickOnButton("Male");
+
+        onboardingPage.wainUntilSpecifyAgeSelectorIsPresented();
+        onboardingPage.clickOnButton("25-34");
+
+        onboardingPage.wainUntilSelectNameSelectorIsPresented();
+        //TDB: Name cannot be filled
+        onboardingPage.fillInName("Arnold Schwarzenegger");
+        onboardingPage.clickOnButtonContinue();
+
+        onboardingPage.wainUntilSelectLanguageSelectorIsPresented("What is your");
+
+        onboardingPage.clickOnButton("Italian");
+        onboardingPage.waitUntilSwitchLanguagePopupIsPresented();
+
+        onboardingPage.clickOnSwitchLanguageButton();
+        onboardingPage.wainUntilSelectLanguageSelectorIsPresented("Ciao!");
+
+        String actualTitle = onboardingPage.getSelectLanguageTitleText();
+        String expectedTitle = "Continua";
+        Assert.assertEquals(actualTitle, expectedTitle, "Language did not change to Italian.");
     }
 
     @AfterClass
