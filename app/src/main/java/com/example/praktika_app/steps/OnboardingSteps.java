@@ -47,7 +47,7 @@ public class OnboardingSteps {
         return onboardingActivity.getSelectLanguageTitleText();
     }
 
-    public void verifyExpectedLanguage(String expectedTitle) {
+    public void verifyLanguageChange(String expectedTitle) {
         String actualTitle = this.getSelectLanguageTitleText();
         Assert.assertEquals(actualTitle, expectedTitle, "Language did not change as expected.");
     }
