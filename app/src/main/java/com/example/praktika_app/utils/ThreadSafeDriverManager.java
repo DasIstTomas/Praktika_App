@@ -1,11 +1,12 @@
 package com.example.praktika_app.utils;
 
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ThreadSafeDriverManager {
     private static ThreadLocal<AppiumDriver> driver = new ThreadLocal<>();
@@ -32,13 +33,15 @@ public class ThreadSafeDriverManager {
     }
 
     private static DesiredCapabilities getDesiredCapabilities() {
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platformName", Configuration.PLATFORM_NAME);
-        caps.setCapability("deviceName", Configuration.DEVICE_NAME);
-        caps.setCapability("appPackage", Configuration.APP_PACKAGE);
-        caps.setCapability("appActivity", Configuration.APP_ACTIVITY);
-        caps.setCapability("automationName", Configuration.AUTOMATION_NAME);
-        caps.setCapability("noReset", Configuration.NO_RESET_T);
+        Map<String, Object> capsMap = new HashMap<>();
+        capsMap.put("platformName", Configuration.PLATFORM_NAME);
+        capsMap.put("appium:deviceName", Configuration.DEVICE_NAME);
+        capsMap.put("appium:appPackage", Configuration.APP_PACKAGE);
+        capsMap.put("appium:appActivity", Configuration.APP_ACTIVITY);
+        capsMap.put("appium:automationName", Configuration.AUTOMATION_NAME);
+        capsMap.put("appium:noReset", Configuration.NO_RESET_T);
+
+        DesiredCapabilities caps = new DesiredCapabilities(capsMap);
         return caps;
     }
 

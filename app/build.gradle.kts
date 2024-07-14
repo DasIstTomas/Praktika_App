@@ -40,7 +40,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     // Add Appium, TestNG, Selenium, Apache Commons Lang, and SLF4J dependencies
-    implementation("io.appium:java-client:8.0.0")
+    implementation("io.appium:java-client:8.1.1")
     testImplementation("org.testng:testng:7.4.0")
     implementation("org.seleniumhq.selenium:selenium-java:4.1.2")
     implementation("org.apache.commons:commons-lang3:3.12.0")

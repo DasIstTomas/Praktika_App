@@ -34,17 +34,17 @@ public class OnboardingSteps {
         onboardingPage.fillInName(name);
         onboardingPage.clickOnButtonContinue();
     }
-
+//TODO remove hardcoded text
     public void selectLanguage(String language) {
         onboardingPage.waitUntilSelectLanguageSelectorIsPresented("What is your");
         onboardingPage.clickOnButton(language);
         onboardingPage.waitUntilSwitchLanguagePopupIsPresented();
-        onboardingPage.clickOnSwitchLanguageButton();
+        onboardingPage.clickOnSwitchLanguageButton("Switch to Italian");
         onboardingPage.waitUntilSelectLanguageSelectorIsPresented("Ciao!");
     }
 
     public String getSelectLanguageTitleText() {
-        return onboardingPage.getSelectLanguageTitleText();
+        return onboardingPage.getSelectLanguageTitleText("Continua");
     }
 
     public void verifyLanguageChange(String expectedTitle) {

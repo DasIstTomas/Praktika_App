@@ -25,9 +25,6 @@ public class OnboardingPage extends BasePage {
     @FindBy(xpath = "//android.widget.EditText[@resource-id=\"ui_textEdit_Name\"]")
     private WebElement nameInputField;
 
-    @FindBy(xpath = "//android.widget.Button[@content-desc=\"Continue\"]")
-    private WebElement continueButton;
-
     @FindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"com.android.permissioncontroller:id/grant_dialog\"]")
     private WebElement notificationPopUp;
 
@@ -37,18 +34,18 @@ public class OnboardingPage extends BasePage {
     @FindBy(xpath = "//*[@resource-id='ui_bsButton_SwitchTo']")
     private WebElement switchLanguagePopup;
 
-    @FindBy(xpath = "//android.widget.Button[@content-desc=\"Switch to Italian\"]")
-    private WebElement switchLanguageButton;
-
-    @FindBy(xpath = "//android.widget.Button[@content-desc=\"Continua\"]")
-    private WebElement italianContinueButton;
-
-    // Template Locators
-    private String buttonXPathTemplate = "//android.view.View[contains(@content-desc, '%s')]";
+    // Template Locators Section. These locators are points to ask developers to add a robust attributes to XML DOM tree
+    private String buttonViewXPathTemplate = "//android.view.View[contains(@content-desc, '%s')]";
+    private String buttonXPathTemplate = "//android.widget.Button[@content-desc='%s']";
     private String selectLanguageTitleXPathTemplate = "//android.view.View[contains(@content-desc, '%s')]";
 
     public OnboardingPage(AppiumDriver driver) {
         super(driver);
+    }
+//TODO: ThreadSafeDriverManager.getDriver();
+    private WebElement getButtonByCommonXpathTemplate(String buttonText) {
+        String buttonXPath = String.format(buttonXPathTemplate, buttonText);
+        return driver.findElement(By.xpath(buttonXPath));
     }
 
     // Wait Methods
@@ -87,12 +84,12 @@ public class OnboardingPage extends BasePage {
         allowNotificationButton.click();
     }
 
-    public void clickOnSwitchLanguageButton() {
-        switchLanguageButton.click();
+    public void clickOnSwitchLanguageButton(String textToClick) {
+        getButtonByCommonXpathTemplate(textToClick).click();
     }
 
     public void clickOnButton(String buttonText) {
-        String buttonXPath = String.format(buttonXPathTemplate, buttonText);
+        String buttonXPath = String.format(buttonViewXPathTemplate, buttonText);
         WebElement button = WaitUtils.getWait(driver).until(ExpectedConditions.elementToBeClickable(By.xpath(buttonXPath)));
         button.click();
     }
@@ -104,11 +101,12 @@ public class OnboardingPage extends BasePage {
     }
 
     public void clickOnButtonContinue() {
-        continueButton.click();
+        getButtonByCommonXpathTemplate("Continue").click();
     }
 
-    public String getSelectLanguageTitleText() {
-        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(italianContinueButton));
-        return italianContinueButton.getAttribute("content-desc");
+    public String getSelectLanguageTitleText(String textToClick) {
+        WebElement element = getButtonByCommonXpathTemplate(textToClick);
+        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(element));
+        return element.getAttribute("content-desc");
     }
 }
