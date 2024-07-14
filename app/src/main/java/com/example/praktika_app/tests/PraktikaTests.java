@@ -8,6 +8,8 @@ public class PraktikaTests extends BaseTest {
     @Test(description = "Test onboarding process and change language to Italian")
     public void testOnboardingAndChangeLanguageToItalian() {
         //Given Section
+        //TODO: Implement installation of the app
+
         //When Section
         onboardingSteps.clickGetStarted();
         onboardingSteps.clickAllowNotifications();
@@ -15,6 +17,7 @@ public class PraktikaTests extends BaseTest {
         onboardingSteps.specifyAge("25-34");
         onboardingSteps.fillInName("Arnold Schwarzenegger");
         onboardingSteps.specifyLanguage("Italian");
+        onboardingSteps.clickOnSwitchLanguage("Switch to Italian");
 
         //Then Section
         onboardingSteps.verifyButtonLanguageChange("Continua");

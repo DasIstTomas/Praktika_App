@@ -5,7 +5,7 @@ import com.example.praktika_app.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import io.appium.java_client.AppiumDriver;
 
 public class OnboardingPage extends BasePage {
@@ -34,22 +34,16 @@ public class OnboardingPage extends BasePage {
     //Handling elements by common locators method
     private WebElement getButtonByCommonXpathTemplate(String buttonText) {
         String buttonXPath = String.format(buttonXPathTemplate, buttonText);
-        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(buttonXPath)));
-        return driver.findElement(By.xpath(buttonXPath));
+        return WaitUtils.waitForElementLocatedBy(driver, By.xpath(buttonXPath));
     }
 
     // Wait Methods Section
     public void waitUntilNotificationPopupIsVisible() {
-        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(notificationPopUp));
-    }
-
-    public void waitUntilElementIsPresented(String text) {
-        String buttonXPath = String.format(commonTextContainerXpath, text);
-        WaitUtils.getWait(driver).until(ExpectedConditions.presenceOfElementLocated(By.xpath(buttonXPath)));
+        WaitUtils.waitForElementLocatedBy(driver, notificationPopUp);
     }
 
     public void waitUntilSwitchLanguagePopupIsPresented() {
-        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(switchLanguagePopup));
+        WaitUtils.waitForElementLocatedBy(driver, switchLanguagePopup);
     }
 
     // Action Methods
@@ -59,7 +53,7 @@ public class OnboardingPage extends BasePage {
     }
 
     public void clickOnAllowNotificationButton() {
-        allowNotificationButton.click();
+        WaitUtils.waitForElementLocatedBy(driver, allowNotificationButton).click();
     }
 
     public void clickOnSwitchLanguageButton(String textToClick) {
@@ -67,15 +61,13 @@ public class OnboardingPage extends BasePage {
     }
 
     public void clickOnButton(String buttonText) {
-        String buttonXPath = String.format(commonTextContainerXpath, buttonText);
-        WebElement button = WaitUtils.getWait(driver).until(ExpectedConditions.elementToBeClickable(By.xpath(buttonXPath)));
-        button.click();
+        WaitUtils.waitForElementLocatedBy(driver, By.xpath(String.format(commonTextContainerXpath, buttonText))).click();
     }
 
     public void fillInName(String name) {
-        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(nameInputField));
-        nameInputField.click();
-        nameInputField.sendKeys(name);
+        WebElement element = WaitUtils.waitForElementLocatedBy(driver, nameInputField);
+        element.click();
+        element.sendKeys(name);
     }
 
     public void clickOnButtonContinue() {
