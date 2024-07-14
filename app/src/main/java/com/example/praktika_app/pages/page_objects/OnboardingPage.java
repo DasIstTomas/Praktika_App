@@ -10,11 +10,7 @@ import io.appium.java_client.AppiumDriver;
 
 public class OnboardingPage extends BasePage {
 
-    @FindBy(xpath = "//android.widget.Button[@content-desc='Get Started']")
-    private WebElement getStartedButton;
 
-    @FindBy(xpath = "//android.view.View[@content-desc='👋 Welcome to Praktika!\nChoose your gender']")
-    private WebElement welcomeSelector;
 
     @FindBy(xpath = "//android.widget.EditText[@resource-id=\"ui_textEdit_Name\"]")
     private WebElement nameInputField;
@@ -28,6 +24,9 @@ public class OnboardingPage extends BasePage {
     @FindBy(xpath = "//*[@resource-id='ui_bsButton_SwitchTo']")
     private WebElement switchLanguagePopup;
 
+    @FindBy(xpath = "//android.view.View[@content-desc='👋 Welcome to Praktika!\nChoose your gender']")
+    private WebElement welcomeSelector;
+
     // Template Locators Section. These locators are points to ask developers to add robust attributes to XML DOM tree
     private String commonTextContainerXpath = "//android.view.View[contains(@content-desc, '%s')]";
     private String buttonXPathTemplate = "//android.widget.Button[@content-desc='%s']";
@@ -35,9 +34,10 @@ public class OnboardingPage extends BasePage {
     public OnboardingPage(AppiumDriver driver) {
         super(driver);
     }
-
+    //Handling elements by common locators method
     private WebElement getButtonByCommonXpathTemplate(String buttonText) {
         String buttonXPath = String.format(buttonXPathTemplate, buttonText);
+        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(buttonXPath)));
         return driver.findElement(By.xpath(buttonXPath));
     }
 
@@ -60,9 +60,9 @@ public class OnboardingPage extends BasePage {
     }
 
     // Action Methods
-    public void clickGetStarted() {
-        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(getStartedButton));
-        getStartedButton.click();
+    public void clickGetStarted(String buttonText) {
+        WebElement element = getButtonByCommonXpathTemplate(buttonText);
+        element.click();
     }
 
     public void clickOnAllowNotificationButton() {
@@ -91,7 +91,6 @@ public class OnboardingPage extends BasePage {
 
     public String getSelectLanguageTitleText(String textToClick) {
         WebElement element = getButtonByCommonXpathTemplate(textToClick);
-        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(element));
         return element.getAttribute("content-desc");
     }
 }

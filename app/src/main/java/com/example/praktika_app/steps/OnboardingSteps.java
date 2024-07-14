@@ -11,7 +11,7 @@ public class OnboardingSteps {
     }
 
     public void clickGetStarted() {
-        onboardingPage.clickGetStarted();
+        onboardingPage.clickGetStarted("Get Started");
     }
 
     public void clickAllowNotifications() {
