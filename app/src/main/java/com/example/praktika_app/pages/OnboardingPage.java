@@ -1,12 +1,12 @@
 package com.example.praktika_app.pages;
 
-import io.appium.java_client.AppiumDriver;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.appium.java_client.AppiumDriver;
 //TBD: Restructure the sections for waiters, clicks and other methods
 public class OnboardingPage extends BasePage {
 
@@ -114,11 +114,10 @@ public class OnboardingPage extends BasePage {
 
     public void wainUntilSelectLanguageSelectorIsPresented(String text) {
         String buttonXPath = String.format(selectLanguageTitleXPathTemplate, text);
-        WebElement title = driver.findElement(By.xpath(buttonXPath));
-
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(title));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(buttonXPath)));
     }
+
     public void waitUntilSwitchLanguagePopupIsPresented() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(switchLanguagePopup));
