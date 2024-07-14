@@ -1,10 +1,10 @@
 ## Praktika AI Mobile App: 
-## Android Automated tests Demonstration, Preparations and Must-Know Things Before Start
+## Android Automated tests Demonstration, Preparations and Must-Know Things Before Tests Start
 
 ### Demonstration
 Kindly, find a link to a loom recorder website for a [demonstration recording](https://www.loom.com/share/f7d82adb437f498db912bd7ca765ab8a)
 
-### Environment Setup on Windows
+### Environment Setup on Windows and Starting Tests
 
 Before running the tests, you need to prepare your environment:
 
