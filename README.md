@@ -38,6 +38,8 @@ The test case covers change of language during onboarding. The case has the foll
 2. Go through onboarding to the language selection screen.
 3. Change the language to Italian.
 
+Note: The test is repeatable regradless of state of the app.
+
 ### Test Actions
 
 - Click the "Get started" button.
@@ -54,6 +56,7 @@ The test case covers change of language during onboarding. The case has the foll
 
 2. **Add Assertions:**
    - Add assertions for the rest of the elements after switching the language to Italian.
+   - Check language before changing it to compare previous and picked locales
 
 3. **Refactor Assertions:**
    - Move assertions to a new file, separating them from the steps layer for better maintainability.
