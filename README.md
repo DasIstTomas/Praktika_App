@@ -18,7 +18,7 @@ Before running the tests, you need to prepare your environment:
 
 3. **Install Appium:**
    - Install Appium Server from the [official website](https://appium.io/).
-   - Start the Appium Server.
+   - Start the Appium Server. (Please notice that ip and port can be different as its defined in the Settings class)
 
 4. **Set Up an Android Emulator:**
    - Open Android Studio and navigate to the AVD Manager.
