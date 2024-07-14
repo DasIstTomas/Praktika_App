@@ -1,5 +1,6 @@
-package com.example.praktika_app.pages;
+package com.example.praktika_app.pages.page_objects;
 
+import com.example.praktika_app.pages.BasePage;
 import com.example.praktika_app.utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import io.appium.java_client.AppiumDriver;
 
-public class OnboardingPage extends BasePage {
+public class OnboardingActivity extends BasePage {
 
     @FindBy(xpath = "//android.widget.Button[@content-desc='Get Started']")
     private WebElement getStartedButton;
@@ -46,7 +47,7 @@ public class OnboardingPage extends BasePage {
     private String buttonXPathTemplate = "//android.view.View[contains(@content-desc, '%s')]";
     private String selectLanguageTitleXPathTemplate = "//android.view.View[contains(@content-desc, '%s')]";
 
-    public OnboardingPage(AppiumDriver driver) {
+    public OnboardingActivity(AppiumDriver driver) {
         super(driver);
     }
 

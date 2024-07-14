@@ -1,6 +1,5 @@
 package com.example.praktika_app.utils;
 
-import com.example.praktika_app.tests.tests_core.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;

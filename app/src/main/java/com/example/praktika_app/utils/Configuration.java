@@ -1,4 +1,4 @@
-package com.example.praktika_app.tests.tests_core;
+package com.example.praktika_app.utils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,7 +12,7 @@ public class Configuration {
     public static final String AUTOMATION_NAME = "UiAutomator2";
     public static final boolean NO_RESET_T = true;
 
-    //The rest configuration
+    //Rest Configuration Section
     public static final String APPIUM_SERVER_URL = "http://127.0.0.1:4723";
     public static final long TIMEOUT_IN_SECONDS = 10;
 

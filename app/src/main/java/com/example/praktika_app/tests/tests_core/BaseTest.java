@@ -1,8 +1,9 @@
 package com.example.praktika_app.tests.tests_core;
 
-import com.example.praktika_app.pages.OnboardingPage;
-import com.example.praktika_app.pages.LanguageSelectionPage;
+import com.example.praktika_app.pages.page_objects.OnboardingActivity;
 import com.example.praktika_app.steps.OnboardingSteps;
+import com.example.praktika_app.utils.Configuration;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -16,8 +17,7 @@ import io.appium.java_client.android.AndroidDriver;
 public class BaseTest {
     protected AppiumDriver driver;
     protected WebDriverWait wait;
-    protected OnboardingPage onboardingPage;
-    protected LanguageSelectionPage languageSelectionPage;
+    protected OnboardingActivity onboardingActivity;
     protected OnboardingSteps onboardingSteps;
 
     @BeforeClass
@@ -33,9 +33,8 @@ public class BaseTest {
         driver = new AndroidDriver(Configuration.getAppiumServerUrl(), caps);
         wait = new WebDriverWait(driver, 10);
 
-        onboardingPage = new OnboardingPage(driver);
-        languageSelectionPage = new LanguageSelectionPage(driver);
-        onboardingSteps = new OnboardingSteps(onboardingPage);
+        onboardingActivity = new OnboardingActivity(driver);
+        onboardingSteps = new OnboardingSteps(onboardingActivity);
     }
 
     @BeforeMethod
