@@ -5,10 +5,12 @@ import org.testng.annotations.Test;
 
 /**
  * Class for testing the onboarding process and language change functionality in the Praktika AI app.
+ * Currently has only one test case within 150-seconds timeout
  */
 public class PraktikaTests extends BaseTest {
 
-    @Test(description = "Test onboarding process and change language to Italian")
+    @Test(description = "Test onboarding process and change language to Italian", timeOut = 150000)
+
     public void testOnboardingAndChangeLanguageToItalian() {
         //Given Section
 
