@@ -18,17 +18,15 @@ import io.appium.java_client.AppiumDriver;
  */
 public class BaseTest {
     protected AppiumDriver driver;
-    protected WebDriverWait wait;
     protected OnboardingPage onboardingPage;
     protected OnboardingSteps onboardingSteps;
 
     /**
-     * Sets up the driver, wait, and page objects before the test class is run.
+     * Sets up the driver, and page objects before the test class is run.
      */
     @BeforeClass
     public void setUp() {
         driver = ThreadSafeDriverManager.getDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Configuration.TIMEOUT_IN_SECONDS));
 
         onboardingPage = new OnboardingPage(driver);
         onboardingSteps = new OnboardingSteps(onboardingPage);
