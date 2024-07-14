@@ -78,3 +78,7 @@ Note: The test is repeatable regradless of state of the installed app.
 
 7. **Use `MobileElement`:**
    - It's recommended to use `MobileElement` for cross-platform compatibility (iOS and Android).
+
+8. **To reduce avoid tests`:**
+   - I ran tests with enablded Fidler to emulate a slower internet speed
+   - I would add more waitings, like not only waiting for UI elements but also http exchanges to be completed, etc.
