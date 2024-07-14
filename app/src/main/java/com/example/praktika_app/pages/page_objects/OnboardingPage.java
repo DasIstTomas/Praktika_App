@@ -16,12 +16,6 @@ public class OnboardingPage extends BasePage {
     @FindBy(xpath = "//android.view.View[@content-desc='👋 Welcome to Praktika!\nChoose your gender']")
     private WebElement welcomeSelector;
 
-    @FindBy(xpath = "//android.view.View[contains(@content-desc, 'How old are you?')]")
-    private WebElement ageSelector;
-
-    @FindBy(xpath = "//android.view.View[contains(@content-desc, 'What is your name?')]")
-    private WebElement nameSelector;
-
     @FindBy(xpath = "//android.widget.EditText[@resource-id=\"ui_textEdit_Name\"]")
     private WebElement nameInputField;
 
@@ -34,15 +28,14 @@ public class OnboardingPage extends BasePage {
     @FindBy(xpath = "//*[@resource-id='ui_bsButton_SwitchTo']")
     private WebElement switchLanguagePopup;
 
-    // Template Locators Section. These locators are points to ask developers to add a robust attributes to XML DOM tree
-    private String buttonViewXPathTemplate = "//android.view.View[contains(@content-desc, '%s')]";
+    // Template Locators Section. These locators are points to ask developers to add robust attributes to XML DOM tree
+    private String commonTextContainerXpath = "//android.view.View[contains(@content-desc, '%s')]";
     private String buttonXPathTemplate = "//android.widget.Button[@content-desc='%s']";
-    private String selectLanguageTitleXPathTemplate = "//android.view.View[contains(@content-desc, '%s')]";
 
     public OnboardingPage(AppiumDriver driver) {
         super(driver);
     }
-//TODO: ThreadSafeDriverManager.getDriver();
+
     private WebElement getButtonByCommonXpathTemplate(String buttonText) {
         String buttonXPath = String.format(buttonXPathTemplate, buttonText);
         return driver.findElement(By.xpath(buttonXPath));
@@ -57,16 +50,8 @@ public class OnboardingPage extends BasePage {
         WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(notificationPopUp));
     }
 
-    public void waitUntilSpecifyAgeSelectorIsPresented() {
-        WaitUtils.getWait(driver).until(ExpectedConditions.elementToBeClickable(ageSelector));
-    }
-
-    public void waitUntilSelectNameSelectorIsPresented() {
-        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(nameSelector));
-    }
-
-    public void waitUntilSelectLanguageSelectorIsPresented(String text) {
-        String buttonXPath = String.format(selectLanguageTitleXPathTemplate, text);
+    public void waitUntilElementIsPresented(String text) {
+        String buttonXPath = String.format(commonTextContainerXpath, text);
         WaitUtils.getWait(driver).until(ExpectedConditions.presenceOfElementLocated(By.xpath(buttonXPath)));
     }
 
@@ -89,7 +74,7 @@ public class OnboardingPage extends BasePage {
     }
 
     public void clickOnButton(String buttonText) {
-        String buttonXPath = String.format(buttonViewXPathTemplate, buttonText);
+        String buttonXPath = String.format(commonTextContainerXpath, buttonText);
         WebElement button = WaitUtils.getWait(driver).until(ExpectedConditions.elementToBeClickable(By.xpath(buttonXPath)));
         button.click();
     }

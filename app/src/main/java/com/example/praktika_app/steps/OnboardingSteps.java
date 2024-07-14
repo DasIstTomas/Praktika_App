@@ -25,22 +25,22 @@ public class OnboardingSteps {
     }
 
     public void specifyAge(String age) {
-        onboardingPage.waitUntilSpecifyAgeSelectorIsPresented();
+        onboardingPage. waitUntilElementIsPresented("How old are you?");
         onboardingPage.clickOnButton(age);
     }
 
     public void fillName(String name) {
-        onboardingPage.waitUntilSelectNameSelectorIsPresented();
+        onboardingPage.waitUntilElementIsPresented("What is your name?");
         onboardingPage.fillInName(name);
         onboardingPage.clickOnButtonContinue();
     }
 //TODO remove hardcoded text
     public void selectLanguage(String language) {
-        onboardingPage.waitUntilSelectLanguageSelectorIsPresented("What is your");
+        onboardingPage.waitUntilElementIsPresented("What is your");
         onboardingPage.clickOnButton(language);
         onboardingPage.waitUntilSwitchLanguagePopupIsPresented();
         onboardingPage.clickOnSwitchLanguageButton("Switch to Italian");
-        onboardingPage.waitUntilSelectLanguageSelectorIsPresented("Ciao!");
+        onboardingPage.waitUntilElementIsPresented("Ciao!");
     }
 
     public String getSelectLanguageTitleText() {
