@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import io.appium.java_client.AppiumDriver;
 
-public class OnboardingActivity extends BasePage {
+public class OnboardingPage extends BasePage {
 
     @FindBy(xpath = "//android.widget.Button[@content-desc='Get Started']")
     private WebElement getStartedButton;
@@ -47,7 +47,7 @@ public class OnboardingActivity extends BasePage {
     private String buttonXPathTemplate = "//android.view.View[contains(@content-desc, '%s')]";
     private String selectLanguageTitleXPathTemplate = "//android.view.View[contains(@content-desc, '%s')]";
 
-    public OnboardingActivity(AppiumDriver driver) {
+    public OnboardingPage(AppiumDriver driver) {
         super(driver);
     }
 

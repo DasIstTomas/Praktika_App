@@ -1,6 +1,6 @@
 package com.example.praktika_app.tests.tests_core;
 
-import com.example.praktika_app.pages.page_objects.OnboardingActivity;
+import com.example.praktika_app.pages.page_objects.OnboardingPage;
 import com.example.praktika_app.steps.OnboardingSteps;
 import com.example.praktika_app.utils.Configuration;
 import com.example.praktika_app.utils.ThreadSafeDriverManager;
@@ -16,7 +16,7 @@ import io.appium.java_client.AppiumDriver;
 public class BaseTest {
     protected AppiumDriver driver;
     protected WebDriverWait wait;
-    protected OnboardingActivity onboardingActivity;
+    protected OnboardingPage onboardingPage;
     protected OnboardingSteps onboardingSteps;
 
     @BeforeClass
@@ -24,8 +24,8 @@ public class BaseTest {
         driver = ThreadSafeDriverManager.getDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(Configuration.TIMEOUT_IN_SECONDS));
 
-        onboardingActivity = new OnboardingActivity(driver);
-        onboardingSteps = new OnboardingSteps(onboardingActivity);
+        onboardingPage = new OnboardingPage(driver);
+        onboardingSteps = new OnboardingSteps(onboardingPage);
     }
 
     @BeforeMethod

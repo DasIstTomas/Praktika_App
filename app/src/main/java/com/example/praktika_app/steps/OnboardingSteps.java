@@ -1,50 +1,50 @@
 package com.example.praktika_app.steps;
 
-import com.example.praktika_app.pages.page_objects.OnboardingActivity;
+import com.example.praktika_app.pages.page_objects.OnboardingPage;
 import org.testng.Assert;
 
 public class OnboardingSteps {
-    private OnboardingActivity onboardingActivity;
+    private OnboardingPage onboardingPage;
 
-    public OnboardingSteps(OnboardingActivity onboardingActivity) {
-        this.onboardingActivity = onboardingActivity;
+    public OnboardingSteps(OnboardingPage onboardingPage) {
+        this.onboardingPage = onboardingPage;
     }
 
     public void clickGetStarted() {
-        onboardingActivity.clickGetStarted();
+        onboardingPage.clickGetStarted();
     }
 
-    public void allowNotifications() {
-        onboardingActivity.waitUntilNotificationPopupIsVisible();
-        onboardingActivity.clickOnAllowNotificationButton();
+    public void clickAllowNotifications() {
+        onboardingPage.waitUntilNotificationPopupIsVisible();
+        onboardingPage.clickOnAllowNotificationButton();
     }
 
     public void selectGender(String gender) {
-        onboardingActivity.waitUntilWelcomeSelectorIsPresented();
-        onboardingActivity.clickOnButton(gender);
+        onboardingPage.waitUntilWelcomeSelectorIsPresented();
+        onboardingPage.clickOnButton(gender);
     }
 
     public void specifyAge(String age) {
-        onboardingActivity.waitUntilSpecifyAgeSelectorIsPresented();
-        onboardingActivity.clickOnButton(age);
+        onboardingPage.waitUntilSpecifyAgeSelectorIsPresented();
+        onboardingPage.clickOnButton(age);
     }
 
     public void fillName(String name) {
-        onboardingActivity.waitUntilSelectNameSelectorIsPresented();
-        onboardingActivity.fillInName(name);
-        onboardingActivity.clickOnButtonContinue();
+        onboardingPage.waitUntilSelectNameSelectorIsPresented();
+        onboardingPage.fillInName(name);
+        onboardingPage.clickOnButtonContinue();
     }
 
     public void selectLanguage(String language) {
-        onboardingActivity.waitUntilSelectLanguageSelectorIsPresented("What is your");
-        onboardingActivity.clickOnButton(language);
-        onboardingActivity.waitUntilSwitchLanguagePopupIsPresented();
-        onboardingActivity.clickOnSwitchLanguageButton();
-        onboardingActivity.waitUntilSelectLanguageSelectorIsPresented("Ciao!");
+        onboardingPage.waitUntilSelectLanguageSelectorIsPresented("What is your");
+        onboardingPage.clickOnButton(language);
+        onboardingPage.waitUntilSwitchLanguagePopupIsPresented();
+        onboardingPage.clickOnSwitchLanguageButton();
+        onboardingPage.waitUntilSelectLanguageSelectorIsPresented("Ciao!");
     }
 
     public String getSelectLanguageTitleText() {
-        return onboardingActivity.getSelectLanguageTitleText();
+        return onboardingPage.getSelectLanguageTitleText();
     }
 
     public void verifyLanguageChange(String expectedTitle) {

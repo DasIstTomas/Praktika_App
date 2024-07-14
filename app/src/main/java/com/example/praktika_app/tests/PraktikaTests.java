@@ -10,7 +10,7 @@ public class PraktikaTests extends BaseTest {
         //Given Section
         //When Section
         onboardingSteps.clickGetStarted();
-        onboardingSteps.allowNotifications();
+        onboardingSteps.clickAllowNotifications();
         onboardingSteps.selectGender("Male");
         onboardingSteps.specifyAge("25-34");
         onboardingSteps.fillName("Arnold Schwarzenegger");
