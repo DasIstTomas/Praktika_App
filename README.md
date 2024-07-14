@@ -46,7 +46,7 @@ The test case covers change of language during onboarding. The case has the foll
 
 Note: The test is repeatable regradless of state of the installed app.
 
-### Test Actions
+### Automated Test Actions
 
 - Click the "Get started" button.
 - Allow notifications.
