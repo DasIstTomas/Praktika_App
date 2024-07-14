@@ -25,7 +25,13 @@ Before running the tests, you need to prepare your environment:
    - Create a new virtual device with a minimum SDK version of 26.
    - Start the emulator.
    - (point to improve) Manually install :Praktika AI" from Google Store.
-
+     
+5. **Run the automated tests using embded Android Studio UI button**
+   - Refer to the dir with [developed code](https://github.com/DasIstTomas/Praktika_App/tree/main/app/src/main/java/com/example/praktika_app)
+   - Go to tests folder and find PractikaTests.java
+   - Click on embded play button to run the automated test
+     Note: The most interesing files you will find in the dir above.
+   
 ### Warning
 
 - Ensure that the minimum SDK version for the emulator is set to 26.
