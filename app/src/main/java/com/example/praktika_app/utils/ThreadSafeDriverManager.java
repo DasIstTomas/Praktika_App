@@ -18,14 +18,7 @@ public class ThreadSafeDriverManager {
         if (driver.get() == null) {
             synchronized (ThreadSafeDriverManager.class) {
                 if (driver.get() == null) {
-                    DesiredCapabilities caps = new DesiredCapabilities();
-                    caps.setCapability("platformName", Configuration.PLATFORM_NAME);
-                    caps.setCapability("deviceName", Configuration.DEVICE_NAME);
-                    caps.setCapability("appPackage", Configuration.APP_PACKAGE);
-                    caps.setCapability("appActivity", Configuration.APP_ACTIVITY);
-                    caps.setCapability("automationName", Configuration.AUTOMATION_NAME);
-                    caps.setCapability("noReset", Configuration.NO_RESET_T);
-
+                    DesiredCapabilities caps = getDesiredCapabilities();
                     try {
                         driver.set(new AndroidDriver(Configuration.getAppiumServerUrl(), caps));
                     } catch (MalformedURLException e) {
@@ -36,6 +29,17 @@ public class ThreadSafeDriverManager {
             }
         }
         return driver.get();
+    }
+
+    private static DesiredCapabilities getDesiredCapabilities() {
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("platformName", Configuration.PLATFORM_NAME);
+        caps.setCapability("deviceName", Configuration.DEVICE_NAME);
+        caps.setCapability("appPackage", Configuration.APP_PACKAGE);
+        caps.setCapability("appActivity", Configuration.APP_ACTIVITY);
+        caps.setCapability("automationName", Configuration.AUTOMATION_NAME);
+        caps.setCapability("noReset", Configuration.NO_RESET_T);
+        return caps;
     }
 
     public static void quitDriver() {
