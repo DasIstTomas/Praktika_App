@@ -14,6 +14,7 @@ public class Configuration {
 
     //The rest configuration
     public static final String APPIUM_SERVER_URL = "http://127.0.0.1:4723";
+    public static final long TIMEOUT_IN_SECONDS = 10;
 
     public static URL getAppiumServerUrl() throws MalformedURLException {
         return new URL(APPIUM_SERVER_URL);
