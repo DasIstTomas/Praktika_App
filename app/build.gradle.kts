@@ -1,3 +1,12 @@
+val allureVersion = "2.24.0"
+val aspectJVersion = "1.9.20.1"
+
+// Define configuration for AspectJ agent
+val agent: Configuration by configurations.creating {
+    isCanBeConsumed = true
+    isCanBeResolved = true
+}
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -46,4 +55,34 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("org.slf4j:slf4j-api:1.7.30")
     implementation("org.slf4j:slf4j-simple:1.7.30") // Simple logger implementation
+
+    // Add Allure dependencies
+    testImplementation(platform("io.qameta.allure:allure-bom:$allureVersion"))
+    testImplementation("io.qameta.allure:allure-testng:$allureVersion")
+    agent("org.aspectj:aspectjweaver:$aspectJVersion")
+    implementation(files("libs/allure-java-commons-2.24.0.jar"))
 }
+
+// Configure all test tasks to use javaagent and generate Allure results
+tasks.withType<Test> {
+    useTestNG()
+    doFirst {
+        jvmArgs = listOf(
+            "-javaagent:${agent.singleFile}"
+        )
+    }
+    val allureResultsDir = File("${layout.buildDirectory.get().asFile}/allure-results").absolutePath
+    systemProperty("allure.results.directory", allureResultsDir)
+}
+test {
+    jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
+}
+
+// Custom task to print the Allure results directory
+tasks.register("printAllureResultsDirectory") {
+    doLast {
+        val allureResultsDir = File("${layout.buildDirectory.get().asFile}/allure-results").absolutePath
+        println("Allure Results Directory: $allureResultsDir")
+    }
+}
+
