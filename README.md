@@ -44,7 +44,7 @@ The test case covers change of language during onboarding. The case has the foll
 2. Go through onboarding to the language selection screen.
 3. Change the language to Italian.
 
-Note: The test is repeatable regradless of state of the app.
+Note: The test is repeatable regradless of state of the installed app.
 
 ### Test Actions
 
