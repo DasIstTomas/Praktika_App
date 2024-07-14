@@ -10,10 +10,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-
 
 public class BaseTest {
     protected AppiumDriver driver;
@@ -25,16 +23,14 @@ public class BaseTest {
     @BeforeClass
     public void setUp() throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("deviceName", "emulator-5554");
-        caps.setCapability("appPackage", "ai.praktika.android");
-        caps.setCapability("appActivity", ".MainActivity");
-        caps.setCapability("automationName", "UiAutomator2");
-        caps.setCapability("noReset", true);
+        caps.setCapability("platformName", Configuration.PLATFORM_NAME);
+        caps.setCapability("deviceName", Configuration.DEVICE_NAME);
+        caps.setCapability("appPackage", Configuration.APP_PACKAGE);
+        caps.setCapability("appActivity", Configuration.APP_ACTIVITY);
+        caps.setCapability("automationName", Configuration.AUTOMATION_NAME);
+        caps.setCapability("noReset", Configuration.NO_RESET_T);
 
-        URL appiumServerUrl = new URL("http://127.0.0.1:4723");
-
-        driver = new AndroidDriver(appiumServerUrl, caps);
+        driver = new AndroidDriver(Configuration.getAppiumServerUrl(), caps);
         wait = new WebDriverWait(driver, 10);
 
         onboardingPage = new OnboardingPage(driver);
@@ -45,12 +41,12 @@ public class BaseTest {
     @BeforeMethod
     public void clearAppData() throws IOException, InterruptedException {
         // Clear app data
-        ProcessBuilder clearData = new ProcessBuilder("adb", "shell", "pm", "clear", "ai.praktika.android");
+        ProcessBuilder clearData = new ProcessBuilder("adb", "shell", "pm", "clear", Configuration.APP_PACKAGE);
         Process clearProcess = clearData.start();
         clearProcess.waitFor();
 
         // Launch the app
-        ProcessBuilder launchApp = new ProcessBuilder("adb", "shell", "am", "start", "-n", "ai.praktika.android/.MainActivity");
+        ProcessBuilder launchApp = new ProcessBuilder("adb", "shell", "am", "start", "-n", Configuration.APP_PACKAGE + "/" + Configuration.APP_ACTIVITY);
         Process launchProcess = launchApp.start();
         launchProcess.waitFor();
     }
