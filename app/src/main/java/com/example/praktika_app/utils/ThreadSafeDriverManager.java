@@ -8,13 +8,22 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Utility Singleton class for managing the AppiumDriver instances in a thread-safe manner.
+ */
 public class ThreadSafeDriverManager {
     private static ThreadLocal<AppiumDriver> driver = new ThreadLocal<>();
 
+    // Private constructor to prevent instantiation
     private ThreadSafeDriverManager() {
-        // private constructor to prevent instantiation
     }
 
+    /**
+     * Gets the AppiumDriver instance for the current thread.
+     * Initializes the driver if it is not already initialized.
+     *
+     * @return the AppiumDriver instance
+     */
     public static AppiumDriver getDriver() {
         if (driver.get() == null) {
             synchronized (ThreadSafeDriverManager.class) {
@@ -32,6 +41,11 @@ public class ThreadSafeDriverManager {
         return driver.get();
     }
 
+    /**
+     * Creates and returns the desired capabilities for the AppiumDriver.
+     *
+     * @return the DesiredCapabilities instance
+     */
     private static DesiredCapabilities getDesiredCapabilities() {
         Map<String, Object> capsMap = new HashMap<>();
         capsMap.put("platformName", Configuration.PLATFORM_NAME);
@@ -41,10 +55,12 @@ public class ThreadSafeDriverManager {
         capsMap.put("appium:automationName", Configuration.AUTOMATION_NAME);
         capsMap.put("appium:noReset", Configuration.NO_RESET_T);
 
-        DesiredCapabilities caps = new DesiredCapabilities(capsMap);
-        return caps;
+        return new DesiredCapabilities(capsMap);
     }
 
+    /**
+     * Quits the AppiumDriver instance for the current thread and removes it from the ThreadLocal storage.
+     */
     public static void quitDriver() {
         if (driver.get() != null) {
             driver.get().quit();

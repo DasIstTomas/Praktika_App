@@ -7,11 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import io.appium.java_client.AppiumDriver;
-
+/**
+ * Represents the onboarding page of the Praktika application.
+ * Provides methods to interact with various elements on the onboarding page.
+ */
 public class OnboardingPage extends BasePage {
 
-
-
+    //Web Element Declarations
     @FindBy(xpath = "//android.widget.EditText[@resource-id=\"ui_textEdit_Name\"]")
     private WebElement nameInputField;
 
@@ -28,6 +30,11 @@ public class OnboardingPage extends BasePage {
     private String commonTextContainerXpath = "//android.view.View[contains(@content-desc, '%s')]";
     private String buttonXPathTemplate = "//android.widget.Button[@content-desc='%s']";
 
+    /**
+     * Constructor to initialize the OnboardingPage with an Appium driver.
+     *
+     * @param driver The Appium driver.
+     */
     public OnboardingPage(AppiumDriver driver) {
         super(driver);
     }
@@ -74,6 +81,12 @@ public class OnboardingPage extends BasePage {
         getButtonByCommonXpathTemplate("Continue").click();
     }
 
+    /**
+     * Retrieves the content description of a button based on the provided text.
+     *
+     * @param textToClick The text used to locate the button.
+     * @return The content description of the button.
+     */
     public String getSelectLanguageTitleText(String textToClick) {
         WebElement element = getButtonByCommonXpathTemplate(textToClick);
         return element.getAttribute("content-desc");

@@ -12,13 +12,19 @@ import java.io.IOException;
 import java.time.Duration;
 
 import io.appium.java_client.AppiumDriver;
-
+/**
+ * Base class for all tests in the Praktika AI application.
+ * Provides common setup and teardown methods for test classes.
+ */
 public class BaseTest {
     protected AppiumDriver driver;
     protected WebDriverWait wait;
     protected OnboardingPage onboardingPage;
     protected OnboardingSteps onboardingSteps;
 
+    /**
+     * Sets up the driver, wait, and page objects before the test class is run.
+     */
     @BeforeClass
     public void setUp() {
         driver = ThreadSafeDriverManager.getDriver();
@@ -28,6 +34,12 @@ public class BaseTest {
         onboardingSteps = new OnboardingSteps(onboardingPage);
     }
 
+    /**
+     * Clears app data and relaunches the app before each test method.
+     *
+     * @throws IOException if an I/O error occurs during the process.
+     * @throws InterruptedException if the current thread is interrupted while waiting.
+     */
     @BeforeMethod
     public void clearAppData() throws IOException, InterruptedException {
         // Clear app data
@@ -41,6 +53,9 @@ public class BaseTest {
         launchProcess.waitFor();
     }
 
+    /**
+     * Quits the driver after the test class is run.
+     */
     @AfterClass
     public void tearDown() {
         ThreadSafeDriverManager.quitDriver();
