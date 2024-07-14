@@ -24,9 +24,6 @@ public class OnboardingPage extends BasePage {
     @FindBy(xpath = "//*[@resource-id='ui_bsButton_SwitchTo']")
     private WebElement switchLanguagePopup;
 
-    @FindBy(xpath = "//android.view.View[@content-desc='👋 Welcome to Praktika!\nChoose your gender']")
-    private WebElement welcomeSelector;
-
     // Template Locators Section. These locators are points to ask developers to add robust attributes to XML DOM tree
     private String commonTextContainerXpath = "//android.view.View[contains(@content-desc, '%s')]";
     private String buttonXPathTemplate = "//android.widget.Button[@content-desc='%s']";
@@ -41,11 +38,7 @@ public class OnboardingPage extends BasePage {
         return driver.findElement(By.xpath(buttonXPath));
     }
 
-    // Wait Methods
-    public void waitUntilWelcomeSelectorIsPresented() {
-        WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(welcomeSelector));
-    }
-
+    // Wait Methods Section
     public void waitUntilNotificationPopupIsVisible() {
         WaitUtils.getWait(driver).until(ExpectedConditions.visibilityOf(notificationPopUp));
     }

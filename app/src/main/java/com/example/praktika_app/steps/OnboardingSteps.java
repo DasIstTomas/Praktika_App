@@ -20,12 +20,12 @@ public class OnboardingSteps {
     }
 
     public void selectGender(String gender) {
-        onboardingPage.waitUntilWelcomeSelectorIsPresented();
+        onboardingPage.waitUntilElementIsPresented("Welcome to Praktika!");
         onboardingPage.clickOnButton(gender);
     }
 
     public void specifyAge(String age) {
-        onboardingPage. waitUntilElementIsPresented("How old are you?");
+        onboardingPage.waitUntilElementIsPresented("How old are you?");
         onboardingPage.clickOnButton(age);
     }
 
