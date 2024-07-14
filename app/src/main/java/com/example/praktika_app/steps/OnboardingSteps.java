@@ -19,7 +19,7 @@ public class OnboardingSteps {
         onboardingPage.clickOnAllowNotificationButton();
     }
 
-    public void selectGender(String gender) {
+    public void specifyGender(String gender) {
         onboardingPage.waitUntilElementIsPresented("Welcome to Praktika!");
         onboardingPage.clickOnButton(gender);
     }
@@ -29,13 +29,13 @@ public class OnboardingSteps {
         onboardingPage.clickOnButton(age);
     }
 
-    public void fillName(String name) {
+    public void fillInName(String name) {
         onboardingPage.waitUntilElementIsPresented("What is your name?");
         onboardingPage.fillInName(name);
         onboardingPage.clickOnButtonContinue();
     }
 //TODO remove hardcoded text
-    public void selectLanguage(String language) {
+    public void specifyLanguage(String language) {
         onboardingPage.waitUntilElementIsPresented("What is your");
         onboardingPage.clickOnButton(language);
         onboardingPage.waitUntilSwitchLanguagePopupIsPresented();

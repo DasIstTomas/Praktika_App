@@ -11,10 +11,10 @@ public class PraktikaTests extends BaseTest {
         //When Section
         onboardingSteps.clickGetStarted();
         onboardingSteps.clickAllowNotifications();
-        onboardingSteps.selectGender("Male");
+        onboardingSteps.specifyGender("Male");
         onboardingSteps.specifyAge("25-34");
-        onboardingSteps.fillName("Arnold Schwarzenegger");
-        onboardingSteps.selectLanguage("Italian");
+        onboardingSteps.fillInName("Arnold Schwarzenegger");
+        onboardingSteps.specifyLanguage("Italian");
 
         //Then Section
         onboardingSteps.verifyLanguageChange("Continua");
