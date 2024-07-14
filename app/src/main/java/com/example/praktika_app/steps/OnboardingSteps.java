@@ -47,8 +47,8 @@ public class OnboardingSteps {
         return onboardingPage.getSelectLanguageTitleText("Continua");
     }
 
-    public void verifyLanguageChange(String expectedTitle) {
+    public void verifyButtonLanguageChange(String expectedTitle) {
         String actualTitle = this.getSelectLanguageTitleText();
-        Assert.assertEquals(actualTitle, expectedTitle, "Language did not change as expected.");
+        Assert.assertEquals(actualTitle, expectedTitle, "Language of the button did not change as expected.");
     }
 }

@@ -17,6 +17,6 @@ public class PraktikaTests extends BaseTest {
         onboardingSteps.specifyLanguage("Italian");
 
         //Then Section
-        onboardingSteps.verifyLanguageChange("Continua");
+        onboardingSteps.verifyButtonLanguageChange("Continua");
     }
 }
