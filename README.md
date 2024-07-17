@@ -6,12 +6,8 @@
   
   ## Spoiler Content
   
-  Here you can add your spoiler content. This can include text, code snippets, images, or any other Markdown content.
-  
-  ```javascript
-  // Example code snippet
-  console.log('Hello, world!');
-
+вывы
+</details>
 ### Demonstration
 Kindly, find a link to a loom recorder website for a [demonstration recording](https://www.loom.com/share/f7d82adb437f498db912bd7ca765ab8a)
 
