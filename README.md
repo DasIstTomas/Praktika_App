@@ -1,6 +1,17 @@
 ## Praktika AI Mobile App: 
 ## Android Automated tests Demonstration, Preparations and Must-Know Things Before Tests Start
 
+<details>
+  <summary>Click to expand</summary>
+  
+  ## Spoiler Content
+  
+  Here you can add your spoiler content. This can include text, code snippets, images, or any other Markdown content.
+  
+  ```javascript
+  // Example code snippet
+  console.log('Hello, world!');
+
 ### Demonstration
 Kindly, find a link to a loom recorder website for a [demonstration recording](https://www.loom.com/share/f7d82adb437f498db912bd7ca765ab8a)
 
@@ -82,15 +93,3 @@ Note: The test is repeatable regradless of state of the installed app.
 8. **To reduce avoid tests`:**
    - I ran tests with enablded Fidler to emulate a slower internet speed
    - I would add more waitings, like not only waiting for UI elements but also http exchanges to be completed, etc.
-  
-<details>
-  <summary>Click to expand</summary>
-  
-  ## Spoiler Content
-  
-  Here you can add your spoiler content. This can include text, code snippets, images, or any other Markdown content.
-  
-  ```javascript
-  // Example code snippet
-  console.log('Hello, world!');
-
