@@ -6,8 +6,40 @@
   
   ## Spoiler Content
   
-вывы
+Senior QA Automation Engineer Mobile
+
+At Praktika, we highly value creative problem-solving and the delivery of high-quality code. As a Mobile Automation QA Engineer, your role is crucial in ensuring the seamless functioning of our mobile applications through rigorous testing and validation.
+
+This assignment aims to evaluate your skills in mobile test automation, your ability to identify and troubleshoot issues, and your proficiency in ensuring a high standard of quality for our language learning features. Your task is designed to reflect the real-world challenges you will encounter at Praktika, providing a glimpse into the dynamic and innovative environment we foster.
+We look forward to seeing your approach to this challenge and how you apply your expertise to maintain the excellence we strive for in our products.
+
+Test task: 
+
+Please download our app from Google Play on your mobile device or emulated device.
+We request you to cover the following test case using automated tests:
+	1.	Click “Get started.”
+	2.	Go through onboarding to the language selection screen.
+	3.	Change the language.
+Please feel free to include assertions and drivers for either an emulator or a real device. Utilise universal locators for elements wherever possible.
+
+
+Technical requirements: 
+
+Use Appium for mobile automation.
+Implement the test case in Java.
+Ensure your code follows best practices for readability and maintainability.
+Use a Page Object Model (POM) design pattern.
+Provide detailed comments and documentation within the code.
+Use a test framework.
+Include error handling and reporting for failed test cases.
+Demonstrate the use of assertions to validate test outcomes.
+
+Deliverables: 
+
+Kindly provide a ZIP archive with your solution.
+
 </details>
+
 ### Demonstration
 Kindly, find a link to a loom recorder website for a [demonstration recording](https://www.loom.com/share/f7d82adb437f498db912bd7ca765ab8a)
 
