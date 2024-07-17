@@ -2,7 +2,7 @@
 ## Android Automated tests Demonstration, Preparations and Must-Know Things Before Tests Start
 
 <details>
-  <summary>Test Task</summary>
+  <summary>Click to expand the Test Task</summary>
   
   ## Spoiler Content
   
